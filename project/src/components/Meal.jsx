@@ -1,39 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Wrapper, Card, Gradient } from "./Style";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-function Popular() {
-  const [popular, setPopular] = useState([]);
+function Meal() {
+  const [meal, setMeal] = useState([]);
 
   useEffect(() => {
-    getPopular();
+    getMeal();
   }, []);
 
-  const getPopular = async () => {
-    const check = localStorage.getItem("popular");
+  const getMeal = async () => {
+    const check = localStorage.getItem("meal");
 
     if (check) {
-      setPopular(JSON.parse(check));
+      setMeal(JSON.parse(check));
     } else {
       const apiResponse = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_API_KEY}&number=15`
+        `https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_API_KEY}&number=9&tags=meal,dessert`
       );
       const data = await apiResponse.json();
 
-      localStorage.setItem("popular", JSON.stringify(data.recipes)); // save string in localStorage
-      setPopular(data.recipes);
+      localStorage.setItem("meal", JSON.stringify(data.recipes)); // save string in localStorage
+      setMeal(data.recipes);
       console.log(data.recipes);
     }
   };
-
   return (
     <div>
       <Wrapper>
-        <h3>Popular Picks</h3>
+        <h3>Meal Dessert</h3>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 3,
             arrows: true,
             pagination: false,
             drag: "free",
@@ -58,7 +57,7 @@ function Popular() {
             },
           }}
         >
-          {popular.map((recipe) => {
+          {meal.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
@@ -75,4 +74,4 @@ function Popular() {
   );
 }
 
-export default Popular;
+export default Meal;
