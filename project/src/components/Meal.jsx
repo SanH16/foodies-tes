@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Wrapper, Card, Gradient } from "./Style";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 import "@splidejs/react-splide/css";
 
 function Meal() {
@@ -23,7 +24,7 @@ function Meal() {
 
       localStorage.setItem("meal", JSON.stringify(data.recipes)); // save string in localStorage
       setMeal(data.recipes);
-      console.log(data.recipes);
+      // console.log(data.recipes);
     }
   };
   return (
@@ -61,8 +62,10 @@ function Meal() {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title} />
+                  <Link to={"/recipe/" + recipe.id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                  </Link>
                   <Gradient />
                 </Card>
               </SplideSlide>

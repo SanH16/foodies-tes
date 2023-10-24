@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { Grid, CardImage } from "../components/Style";
 
 function Cuisine() {
@@ -16,7 +15,7 @@ function Cuisine() {
     const recipes = await data.json();
 
     setCuisine(recipes.results);
-    console.log(recipes.results);
+    // console.log(recipes.results);
   };
 
   useEffect(() => {
@@ -25,12 +24,14 @@ function Cuisine() {
   }, [params.category]);
 
   return (
-    <Grid>
+    <Grid animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       {cuisine.map((item) => {
         return (
           <CardImage key={item.id}>
-            <img src={item.image} alt={item.title} />
-            <h4>{item.title}</h4>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt={item.title} />
+              <h4>{item.title}</h4>
+            </Link>
           </CardImage>
         );
       })}

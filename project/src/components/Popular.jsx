@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Wrapper, Card, Gradient } from "./Style";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 import "@splidejs/react-splide/css";
 
 function Popular() {
@@ -23,7 +24,7 @@ function Popular() {
 
       localStorage.setItem("popular", JSON.stringify(data.recipes)); // save string in localStorage
       setPopular(data.recipes);
-      console.log(data.recipes);
+      //   console.log(data.recipes);
     }
   };
 
@@ -62,8 +63,10 @@ function Popular() {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title} />
+                  <Link to={"/recipe/" + recipe.id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                  </Link>
                   <Gradient />
                 </Card>
               </SplideSlide>

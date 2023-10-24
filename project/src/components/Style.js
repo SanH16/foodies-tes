@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -76,7 +77,7 @@ const SLink = styled(NavLink)`
   }
 `;
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-gap: 3rem;
@@ -96,4 +97,76 @@ const CardImage = styled.div`
   }
 `;
 
-export { Wrapper, Card, Gradient, List, Grid, CardImage, SLink };
+const FormStyle = styled.form`
+  margin: 0rem 25rem;
+  div {
+    width: 100%;
+    position: relative;
+  }
+  input {
+    border: none;
+    background: linear-gradient(35deg, #494949, #313131);
+    font-size: 1rem;
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    width: 100%;
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(100%, -50%);
+    color: white;
+  }
+`;
+
+const DetailWrapper = styled.div`
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  display: flex;
+  .active {
+    background: linear-gradient(35deg, #494949, #313131);
+    color: white;
+  }
+  img {
+    border-radius: 2rem;
+  }
+  h2 {
+    margin-bottom: 2rem;
+  }
+  li {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+  ul {
+    margin-top: 2rem;
+  }
+`;
+
+const ButtonStyle = styled.button`
+  padding: 1rem 2rem;
+  color: #313131;
+  background: white;
+  border: 2px solid black;
+  margin-right: 2rem;
+  font-weight: 600;
+  border-radius: 10px;
+`;
+
+const Info = styled.div`
+  margin-left: 5rem;
+  h4 {
+    margin: 2rem 0rem;
+    text-align: justify;
+  }
+  li {
+    display: inline-block;
+    align-items: center;
+    margin: 0rem 1rem;
+  }
+`;
+
+export { Wrapper, Card, Gradient, List, Grid, CardImage, SLink, FormStyle, DetailWrapper, ButtonStyle, Info };

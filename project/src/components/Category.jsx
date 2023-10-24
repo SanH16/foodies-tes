@@ -1,7 +1,6 @@
 import { FaBowlFood, FaPizzaSlice } from "react-icons/fa6";
 import { GiNoodles, GiChickenOven } from "react-icons/gi";
 import { List, SLink } from "./Style";
-import styled from "styled-components";
 
 function Category() {
   return (

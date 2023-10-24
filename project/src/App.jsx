@@ -1,12 +1,18 @@
 import "./App.css";
 import Category from "./components/Category";
+import Search from "./components/Search";
 import Pages from "./routes/Pages";
+import logo from "./assets/icon/foodies-icon.svg";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <>
       <div>
-        <h1>Foodies</h1>
+        <Link to={"/"}>
+          <img src={logo} alt="Foodies Logo" />
+        </Link>
+        <Search />
         <Category />
         <Pages />
       </div>
