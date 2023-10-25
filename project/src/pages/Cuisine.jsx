@@ -10,7 +10,7 @@ function Cuisine() {
     const data = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
         import.meta.env.VITE_API_KEY
-      }&cuisine=${category}&number=5`
+      }&cuisine=${category}&number=8`
     );
     const recipes = await data.json();
 
