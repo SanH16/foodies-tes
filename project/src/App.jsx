@@ -2,7 +2,7 @@ import "./App.css";
 import Category from "./components/Category";
 import Search from "./components/Search";
 import Pages from "./routes/Pages";
-import logo from "./assets/icon/foodies-icon.svg";
+import logo from "./assets/icon/foodies-icon-new.svg";
 import { Link } from "react-router-dom";
 
 function App() {
